@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-open-disk" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Disk</name>
+    <description>磁盘操作</description>
+    <js-module name="Disk" src="www/Disk.js">
+        <clobbers target="window.plugins.disk"/>
+    </js-module>
+    
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Disk">
+                <param name="android-package" value="cordova.plugins.Disk"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/Disk.java" target-dir="src/cordova/plugins"/>
+    </platform>
+    <platform name="ios">
+
+        <config-file parent="/*" target="config.xml">
+            <feature name="Disk">
+                <param name="ios-package" value="DCPDisk" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/DCPDisk.h"/>
+        <source-file src="src/ios/DCPDisk.m"/>
+    </platform>
+</plugin>
